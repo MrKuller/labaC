@@ -10,3 +10,4 @@ int main()
     printf("x1=%1f,x2=%1f", d,d2);
 
     return 0;
+}
