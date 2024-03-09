@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <math.h>
 int main(){
-    double arr[3][3];
+    int a;
+    printf("VVedite razmer: \n");
+    scanf("%d", &a);
+    double arr[a][a];
     int q,w;
     printf("Vvedite znach: \n");
-    for (int q = 0; q < 3; q++){
-        for (int w = 0; w<3; w++){
+    for (int q = 0; q < a; q++){
+        for (int w = 0; w<a; w++){
             scanf("%lf",&arr[q][w]);
         }
     }
     int x = 0;
-    for (int i = 0; i < 3; i ++){
-        for (int j = 0; j < 3; j++){
+    for (int i = 0; i < a; i ++){
+        for (int j = 0; j < a; j++){
             printf("%.1f ", arr[i][j]);
             if (i == j) {
                 x += arr[i][j];
@@ -20,8 +23,8 @@ int main(){
         printf("\n");
     }
     int y = 0;
-    for (int i = 0; i < 3; i++){
-        y += arr[i][2-i];
+    for (int i = 0; i < a; i++){
+        y += arr[i][(a-1)-i];
     }
     printf("Summ main dia: %d\n", x);
     printf("Summ vtor dia: %d\n", y);
