@@ -1,19 +1,14 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 #include <stdlib.h>
 int main() {
     FILE *file = fopen("names.txt", "r");
     FILE *newF = fopen("new.txt", "w");
-    if (file == NULL || newF == NULL){
-        printf("Error\n");
-        return 1;
-    }
-    char stolb[20];
-    while (fgets(stolb, sizeof(stolb), file)){
+    char strok[60];
+    while (fgets(strok, sizeof(strok), file)){
         int god;
-        sscanf(stolb, "%*s %*s %*s %d", &god);
+        sscanf(strok, "%*s %*s %*s %d", &god);
         if (god > 1980){
-            fprintf(newF, "%*s", stolb);
+            fprintf(newF, "%s", strok);
         }
     }
     fclose(file);
