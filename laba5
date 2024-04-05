@@ -1,1 +1,58 @@
-yfjyt
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "sec.h"
+int main()
+{
+    int i, j, n;
+    char znak;
+    double **m1, **m2, **end;
+    printf("Vvedite razmer matric:\n");
+    scanf("%d",&n);
+    printf("Vvedite znak:\n");
+    scanf("%c",&znak);
+     m1=(double**)malloc(n*sizeof(double*));
+    for(i=0;i<n;i++){
+        m1[i]= (double*)malloc(n*sizeof(double));
+    }
+    printf("Vvedite znachfunc m1:\n");
+    for (i=0; i<n; i++){
+        for (j=0; j<n; j++){
+            scanf("%d", &m1[i][j]);
+        }
+    }
+    for (i=0, i<n, i++){
+        for (j=0, j<n, j++){
+            printf("%d", m1[i][j]);
+        }
+        printf("\n")
+    }
+    m2=(double**)malloc(n*sizeof(double*));
+    for(i=0;i<n;i++){
+        m2[i]= (double*)malloc(n*sizeof(double));
+    }
+    result=(double**)malloc(n*sizeof(double*));
+    for(i=0;i<n;i++){
+        result[i]= (double*)malloc(n*sizeof(double));
+    }
+    printf("Vvedite znachfunc m2:\n");
+    for (i=0; i<n; i++){
+        for (j=0; j<n; j++){
+            scanf("%d", &m2[i][j]);
+        }
+    }
+    for (i=0; i<n; i++){
+        for (j=0; j<n; j++){
+            printf("%d", m2[i][j]);
+        }
+        printf("\n")
+    }
+    printf("result:\n")
+}
+
+
+
+------------------------------------------
+
+
+
