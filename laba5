@@ -47,7 +47,23 @@ int main()
         }
         printf("\n")
     }
-    printf("result:\n")
+    printf("result:\n");
+    result=reshenie(m1,m2,n, znak);
+    for (i=0; i<n; i++){
+        for (j=0; j<n; j++){
+            printf("%d", result[i][j]);
+        }
+        printf("\n")
+    }
+    for (i=0;i<n;i++){
+        free(m1[i]);
+    }
+    free(m1);
+    for (i=0;i<n;i++){
+        free(m2[i]);
+    }
+    free(m2);
+    return 0;
 }
 
 
