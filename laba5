@@ -97,5 +97,144 @@ double **reshenie(double **m1,double **m2,int n, char znak){
             }
         }
     }
-    return **result;
+    return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "sec.h"
+int main()
+{
+    double **m1, **m2, **result;
+    int i, j, n;
+    char znak;
+    printf("Vvedite znak: \n");
+    scanf("%c", &znak);
+    printf("Vvedite razmer matrici: \n");
+    scanf("d", &n);
+    m1 = razmer(n);
+    m2 = razmer(n);
+    printf("Vvedite znach m1: \n");
+    for (i=0; i<n; i++){
+        for (j=0; j<n; j++){
+            scanf("lf", &m1[i][j]);
+        }
+    }
+    printm(n, m1);
+    printf("Vvedite znach m2: \n");
+    for (i=0; i<n; i++){
+        for (j=0; j<n; j++){
+            scanf("lf", &m2[i][j]);
+        }
+    }
+    printm(n, m2);
+    result = reshenie(m1, m2, n, znak);
+    printf("Reshenie: \n");
+    printm(n, result);
+    for (i=0; i<n; i++){
+        free(m1[i]);
+    }
+    free(m1);
+    for (i=0;i<n;i++){
+        free(m2[i]);
+    }
+    free(m2);
+    return 0;
+}
+
+
+
+____________________________________________________
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+double second(){
+    int i, j, n;
+    char znak;
+    double **razmer(int n){
+        double **perem = (double**)malloc(n*sizeof(double*));
+        for (int i=0; i<n; i++){
+            perem[i] = (double*)malloc(n*sizeof(double));
+        }
+        return perem;
+    }
+    void printm(int n, double **matric){
+        int i, j;
+        for (i=0;i<n;i++){
+            for (j=0;j<n;j++){
+                printf("lf ", matric[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    double reshenie(double **m1, double **m2, int n, char znak){
+        double **result = razmer(n);
+        int i, j, k;
+        if (znak == '+'){
+            for (i=0;i<n;i++){
+                for (j=0;j<n;j++){
+                    result[i][j] = m1[i][j] + m2[i][j];
+                }
+            }
+        }
+        if (znak == '-'){
+            for (i=0;i<n;i++){
+                for (j=0;j<n;j++){
+                    result[i][j] = m1[i][j] - m2[i][j];
+                }
+            }
+        }
+        if (znak == '*'){
+            for (i=0;i<n;i++){
+                for (j=0;j<n;j++){
+                    result = 0;
+                    for (k=0;k<n;k++){
+                        result[i][j] = m1[i][k] * m2[k][j];
+                    }
+                }
+            }
+        }
+        return **result;
+    }
 }
