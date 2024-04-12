@@ -97,5 +97,5 @@ double **reshenie(double **m1,double **m2,int n, char znak){
             }
         }
     }
-    return result;
+    return **result;
 }
