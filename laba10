@@ -5,7 +5,7 @@ int n, i, cnt = 0;
 
 int ass[128];
 #define max_num(arr, n) ({ \
-    int max = arr[0];\
+    int max = 0;\
     int cnt = 0;\
     double x;\
     for (i = 0; i<n; i++){ \
