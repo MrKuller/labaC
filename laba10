@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int n, i, x, cnt = 0;
+int ass[128];
+#define max_num(arr, n) ({ \
+    int max = arr[0]; \
+    for (i = 0; i<n; i++){ \
+        if (arr[i] > max){ \
+            max = arr[i]; \
+        } \
+    } \
+    max; \
+})
+int main(){
+    printf("Vvedite kolvo chisel: \n");
+    scanf("%d", &n);
+    printf("Vvedite chisla: \n");
+    for (i=0;i<n;i++){
+        scanf("%d", &ass[i]);
+    }
+    printf("mx: %d\n", max_num(ass, n));
+}
