@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int n, i, x, cnt = 0;
+int n, i, cnt = 0;
+
 int ass[128];
 #define max_num(arr, n) ({ \
-    int max = arr[0]; \
+    int max = arr[0];\
+    int cnt = 0;\
+    double x;\
     for (i = 0; i<n; i++){ \
         if (arr[i] > max){ \
-            max = arr[i]; \
+            max += arr[i]; \
+            cnt += 1;\
         } \
     } \
-    max; \
+    x = max / cnt;\
+    x; \
 })
 int main(){
     printf("Vvedite kolvo chisel: \n");
@@ -19,5 +24,6 @@ int main(){
     for (i=0;i<n;i++){
         scanf("%d", &ass[i]);
     }
-    printf("mx: %d\n", max_num(ass, n));
+    
+    printf("mx: %.2lf\n", max_num(ass, n));
 }
