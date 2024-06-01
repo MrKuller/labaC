@@ -1,0 +1,112 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int i, j, k,n;
+double **m1, **m2, **plus, **umnosh;
+
+double **razmer(int n){
+        double **perem = (double**)malloc(n*sizeof(double*));
+        for(i=0;i<n;i++){
+            perem[i]=(double*)malloc(n*sizeof(double));
+        }
+        return perem;
+}
+
+int main()
+{
+    printf("Vvedite razmer matric: \n");
+    scanf("%d", &n);
+    FILE *inp = fopen("input.txt", "w");
+    m1 = razmer(n);
+    m2 = razmer(n);
+    plus = razmer(n);
+    umnosh = razmer(n);
+    for (i=0; i<n;i++){
+        for (j=0; j<n; j++){
+            m1[i][j] = rand() % 10;
+        }
+    }
+    for (i=0; i<n;i++){
+        for (j=0; j<n; j++){
+            m2[i][j] = rand() % 10;
+        }
+    }
+    for (i=0; i<n;i++){
+        for (j=0; j<n; j++){
+            fprintf(inp, "%lf ", m1[i][j]);
+        }
+        fprintf(inp,"\n");
+    }
+    fprintf(inp,"\n");
+    for (i=0; i<n;i++){
+        for (j=0; j<n; j++){
+            fprintf(inp, "%lf ", m2[i][j]);
+        }
+        fprintf(inp,"\n");
+    }
+    fclose(inp);
+    for (i=0;i<n;i++){
+        free(m1[i]);
+    }
+    for (i=0;i<n;i++){
+        free(m2[i]);
+    }
+    
+    
+    
+    
+    
+    FILE *outp = fopen("output.txt", "w");
+    FILE *inp2 = fopen("input.txt", "r");
+    double **m3, **m4;
+    m3 = razmer(n);
+    m4 = razmer(n);
+    for (i=0; i<n; i++){
+        for (j=0;j<n; j++){
+            fscanf(inp2, "%lf", &m3[i][j]);
+        }
+    }
+    for (i=0; i<n; i++){
+        for (j=0;j<n; j++){
+            fscanf(inp2, "%lf", &m4[i][j]);
+        }
+    }
+    double **plys(double **m3, double **m4, int n){
+        double **result = razmer(n);
+        for (i=0; i<n; i++){
+            for (j=0; j<n; j++){
+                result[i][j] = m1[i][j] + m2[i][j];
+            }    
+        }
+        return result;
+    }
+    
+    double **umnos(double **m3, double **m4, int n){
+        double **result = razmer(n);
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<n; j++){
+                for (int x=0; x<n; x++){
+                    result[i][j] = m3[i][x] * m4[x][j];
+                }
+            }
+        }
+        return result;
+    }
+    umnosh = umnos(m3,m4,n);
+    plus = plys(m3,m4,n);
+    
+   
+    for (i=0; i<n;i++){
+        for (j=0; j<n; j++){
+            fprintf(outp, "%lf ", plus[i][j]);
+        }
+        fprintf(outp,"\n");
+    }
+    fprintf(outp,"\n");
+    for (i=0; i<n;i++){
+        for (j=0; j<n; j++){
+            fprintf(outp, "%lf ", umnosh[i][j]);
+        }
+        fprintf(outp,"\n");
+    }
+}
