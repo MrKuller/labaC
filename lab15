@@ -1,1 +1,29 @@
+#include <stdio.h>
 
+void printDigit(int n){
+  int digit = n%10;
+  if(n/10 != 0){
+    printDigit(n/10);
+  }
+}
+void printDigitReverse(int n){
+  int digit = n%10;
+  printf("%d ", digit);
+  if(n/10 != 0){
+    printDigitReverse(n/10);
+  }
+}
+int main(){
+  int N;
+  printf("Vvedite n: ");
+  scanf("%d", &N);
+
+  printf("Digit normal: ");
+  printDigit(N);
+  printf("/n");
+
+  printf("Digit normal: ");
+  printDigitReverse(N);
+  printf("/n");
+  return 0;
+}
